@@ -1,24 +1,10 @@
 ---
-layout : 
+layout: single
 title : "A Web Server Unikernel in Rust"
 permalink : /projects/ouros/
 date : 2017-06-02
 tags : [web-server,unikernel,rust]
 categories : [Systems Programming]
-
-# defaults:
-#   # _posts
-#   - scope:
-#       path: ""
-#       type: posts
-#     values:
-#       layout: single
-#       author_profile: true
-#       read_time: true
-#       comments: true
-#       share: true
-#       related: true
-
 ---
 
 This is the work I have done under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/) as a part of my undergraduate project.The goal is to build a <b>Web Server Unikernel</b> entirely in Rust. If built as a whole can boost the reliability of servers on the cloud by manifold.
@@ -430,3 +416,4 @@ Now, Try NOT to imagine a pink elephant wearing shades and drinking a coconut in
 You just did. Cheers!
 
 *Rajiv*
+

@@ -1,0 +1,19 @@
+---
+title: "Posts by Category"
+layout: archive
+permalink: /projects/
+author_profile: true
+---
+<div>
+	{% for repo in site.github.public_repositories %}
+	{% if repo.description contains "<!--mark-->"%}
+		<div class="container message">
+			<h5><a href={{repo.html_url}}>{{repo.name}}</a></h5>
+			<p>{{repo.description |split:"<!--mark-->" | first }}</p>
+		</div>
+		<div class="line"></div>
+	{% endif %}
+{% endfor %}
+	
+
+</div>

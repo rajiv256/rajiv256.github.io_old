@@ -1,0 +1,5 @@
+.page__content p, 
+.page__content li, 
+.page__content dl{
+    font-size: 0.75em ; 
+}
