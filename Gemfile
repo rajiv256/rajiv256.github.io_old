@@ -3,3 +3,4 @@ gemspec
 
 gem 'jekyll-archives'
 gem 'jekyll-github-metadata'
+gem 'jekyll-octicons'

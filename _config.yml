@@ -234,7 +234,8 @@ plugins:
   - jekyll-include-cache
   - jekyll-archives
   - jekyll-github-metadata
-
+  - jekyll-octicons
+  
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
@@ -243,6 +244,7 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-archives
+  - jekyll-octicons
 
 
 # Archives
