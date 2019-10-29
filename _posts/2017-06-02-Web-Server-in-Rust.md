@@ -7,22 +7,22 @@ tags : [web-server,unikernel,rust]
 categories : [Systems Programming]
 ---
 
-This is the work I have done under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/) as a part of my undergraduate project.The goal is to build a <b>Web Server Unikernel</b> entirely in Rust. If built as a whole can boost the reliability of servers on the cloud by manifold.
+This is the work I have done for my undergraduate thesis under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The goal is to build a <b>Unikernel Web Server</b> completely in Rust. Rust due to its unique design accounts for more fault-tolerant servers on cloud and my project is a baby step in this direction. 
 
-All the source code related to the project is available [here](https://github.com/rajiv256/ouros).
+All the source code related to the project is available [here](https://github.com/rajiv256/huckle).
 
 ## Pay the Piper
 <!--break-->
 
-For a long time Servers on cloud are written in C,C++. This is due to the fact that these are low level languages and this produces blazingly fast web applications. However the vast level of advantages come with a small glitch. C/C++ programs are prone to various run time errors like segmentation faults, dangling pointers and null pointers etc.., and these might cause the whole system to crash. This could be a burden to bear in performance critical applications but when it comes to reliability we require the application to never crash or even if it does we should be able to fix it immediately. For example if an organisation is operating their services on the cloud they can't afford the cloud service to crash which will cause loss for their organisation. C and C++ guarantere high performance but not reliability. Therefore there is a need for a language which is reliable and memory safe without comprimising much on the performance.
+For a long time servers on tbe cloud have been written in C/C++. This is due to the fact that these are low level languages and therefore produce blazingly fast web applications. However, this definitve advantage comes with a small glitch. C/C++ programs are prone to various run time errors like segmentation faults, dangling pointers and null pointers which can cause the whole system to crash. This could be a burden to bear in performance-critical applications but when it comes to reliability we require the application to never crash or even if it does we should be able to fix it immediately. For example if an organisation is operating their services on the cloud they can't afford the cloud service to crash which will cause loss for their organisation. C and C++ guarantere high performance but not reliability. Therefore there is a need for a language which is reliable and memory safe and be all that without compromising much on the performance.
 
 Enter Rust!
 
 ## Rust
 
-Rust is a systems programming language that is focussed on safety, security and concurrency. Rust has almost no run-time. Almost all the type checking is done during the compile time and therefore leaves very less to do during the runtime, thus ensuring the speed. As for safety, the features like __Ownership__, __References__ and __Borrowing__, and __Lifetimes__ gives it a superior memory management scheme that is devoid of all the memory issues like dangling pointers, null pointers etc.., Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for. Therefore Rust is a better alternative for writing low level performance critical applications like device drivers or Operating systems. This also works well in cloud. Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a hypervisor in cloud.
+Rust is a systems programming language that is focused on safety, security and concurrency. Rust has almost no run-time. Almost all the type checking is done during the compile time and therefore leaves very less to do during the runtime, thus ensuring the speed. As for safety, the features like __Ownership__, __References__ & __Borrowing__, and __Lifetimes__ give it a superior memory management scheme that is devoid of memory errors. Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for and therefore is a better alternative for writing low-level, performance-critical applications like device drivers or operating systems. This also works well in cloud. Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a bare-metal hardware on the cloud.
 
-You can read more about Rust and its superior features [here](https://doc.rust-lang.org/book/)
+You can read more about Rust and its superior features [here](https://doc.rust-lang.org/book/).
 
 ## Unikernel
 Unikernels are single memory address space machines. These are something like miniOSes where you can only run one program. Basically unikernels are just a subset of libraries that we need taken from an OS and compiled into a bootable image. Their memory footprint is far lesser than a regular OS and because this the performance of the Unikernel will be far better than it. There won't be all those interrupts, task state change, exceptions, stack switching etc.., right?
