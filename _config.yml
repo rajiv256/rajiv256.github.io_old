@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Rajiv Teja"
   avatar           : "assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I see myself as a programmer. I want to build intelligent machines and fault-tolerant operating systems."
+  bio              : "I see myself as a programmer. I want to build intelligent machines and operating systems."
   location         : "Bangalore"
   email            : 
   github:    https://github.com/rajiv256
