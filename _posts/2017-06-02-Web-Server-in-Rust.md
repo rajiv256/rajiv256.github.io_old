@@ -13,7 +13,7 @@ All the source code related to the project is available [here](https://github.co
 
 ## Packet Exchange Demo
 
-<iframe width="560" height="315" src="https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
+Here's the link for the packet exchange demo. Will try to embed into the page at a later stage. [https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing"][Demo Link!]
 
 ## Pay the Piper
 <!--break-->
