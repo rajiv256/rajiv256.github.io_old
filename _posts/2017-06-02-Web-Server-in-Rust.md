@@ -7,47 +7,52 @@ tags : [web-server,unikernel,rust]
 categories : [Systems Programming]
 ---
 
-This is the work I have done for my undergraduate thesis under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The goal is to build a <b>Unikernel Web Server</b> completely in Rust. Rust due to its unique design accounts for more fault-tolerant servers on cloud and my project is a baby step in this direction. 
 
-All the source code related to the project is available [here](https://github.com/rajiv256/huckle).
+
+This is the work I have done for my undergraduate thesis at the Computer Science department of IITM, under the guidance of  [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The goal of the project is to build a **Unikernel Web Server in Rust**. The aims of this project are two-fold: 
+
+1. To write a web server in Rust, as Rust by its design results in the applications that are resilient to memory errors and does this without compromising on the speed. 
+2. Use an Unikernel, so that the kernel has a least amount of role in the entire operation of the application, allowing the application to talk with the hardware directly. Unikernel just setsup the execution environment and memory management. 
+
+All the source code regarding this project is available [here](https://github.com/rajiv256/huckle). Contact me, if you have any issues in running it, I might be able to help. 
 
 ## Packet Exchange Demo
 
-Here's the link for the packet exchange demo. Will try to embed into the page at a later stage. [Demo Link!](https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing")
+Here's the link for the packet exchange demo. Will try to embed it into this page at a later stage (I like it when my sentence rhymes) . [Demo Link!](https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing")
 
 ## Pay the Piper
 <!--break-->
 
-For a long time servers on tbe cloud have been written in C/C++. This is due to the fact that these are low level languages and therefore produce blazingly fast web applications. However, this definitve advantage comes with a small glitch. C/C++ programs are prone to various run time errors like segmentation faults, dangling pointers and null pointers which can cause the whole system to crash. This could be a burden to bear in performance-critical applications but when it comes to reliability we require the application to never crash or even if it does we should be able to fix it immediately. For example if an organisation is operating their services on the cloud they can't afford the cloud service to crash which will cause loss for their organisation. C and C++ guarantere high performance but not reliability. Therefore there is a need for a language which is reliable and memory safe and be all that without compromising much on the performance.
+For a long time, servers on the cloud were being written in C or C++, because they are arguably low-level languages and therefore produces blazingly fast web servers. However, this definitive advantage comes with a small glitch - The applications written in these languages are prone to run-time errors like Segmentation fault or dangling pointers or null pointers, or any combination of them, which make the system crash. This could be a burden to bear in performance-critical application, but when it comes to reliability, we can see a glaring short-coming in these web servers. Not to mention they produce a huge heap of debug messages that can confuse the most experienced. Therefore, there is a need for a language that is reliable and guarantees memory safety without compromising much on the performance.
 
 Enter Rust!
 
 ## Rust
 
-Rust is a systems programming language that is focused on safety, security and concurrency. Rust has almost no run-time. Almost all the type checking is done during the compile time and therefore leaves very less to do during the runtime, thus ensuring the speed. As for safety, the features like __Ownership__, __References__ & __Borrowing__, and __Lifetimes__ give it a superior memory management scheme that is devoid of memory errors. Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for and therefore is a better alternative for writing low-level, performance-critical applications like device drivers or operating systems. This also works well in cloud. Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a bare-metal hardware on the cloud.
+Rust is a systems programming language that is focused on safety, security and concurrency. Rust has almost no run-time. All the type checking is done during the compile time and therefore leaves very less to do during the runtime, thus ensuring the speed. As for safety, the features like __Ownership__, __References__ & __Borrowing__, and __Lifetimes__ give it a superior memory management scheme that is devoid of memory errors. Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for and therefore is a better alternative for writing low-level, performance-critical applications like device drivers or operating systems. This also works well in the cloud. Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a bare-metal hardware on the cloud.
 
 You can read more about Rust and its superior features [here](https://doc.rust-lang.org/book/).
 
 ## Unikernel
-Unikernels are single memory address space machines. These are something like miniOSes where you can only run one program. Basically unikernels are just a subset of libraries that we need taken from an OS and compiled into a bootable image. Their memory footprint is far lesser than a regular OS and because this the performance of the Unikernel will be far better than it. There won't be all those interrupts, task state change, exceptions, stack switching etc.., right?
+Unikernels are single memory address space machines. They could be seen as miniOS-es where you can only run one program. Basically unikernels are just a subset of libraries that we need, taken from an OS and compiled into a bootable image. Their memory footprint is far lesser than a regular OS and because of this, the performance of the Unikernel will be far better than regular operating systems. 
 
 ## Goal of the Project
-The aim of this project is to build a web server which will then be placed along with an Unikernel. So, what happens is that the Unikernel boots and starts the server. The entire setup needs to be setup on a hypervisor which is nothing but raw hardware.
+The aim of this project is to build a web server which will then be placed along with an Unikernel. So, what happens is that the Unikernel boots and starts the server. The entire setup needs to be setup on a bare-metal which is nothing but raw hardware.
 
 ## How do we proceed?
 
-Well, that is a lot to take if you are a beginner. But trust me, I was also a beginner when I started this and had no idea of what to do. However google searches and a lot of research for almost 3 consecutive days I landed up with a method to solve this. Although the path after this was covered with lots of segmentation faults, stupidity of an amateur and ignorance of the simplitudes, I wouldn't talk about all of them here, but it feels good to acknowledge all of them. We learn from our mistakes, right?
+Well, that is a lot to take, especially if you are a beginner. But trust me, I was also a beginner (I still am) when I started this and had no idea what to do. However google searches and a lot of research for almost a month, I landed up with a method to address the problem. The path after this was marked by innumerous  segmentation faults, stupidities of an amateur and ignorance of the simplitudes. I won't talk about them here, but it feels good to acknowledge them. Afterall, we learn from our mistakes, right?
 
-1. To start with, first we need to build an Unikernel. Trust me when I say writing an OS takes a lot of effort and time. A small mistake or a small inaccuracy may make you go mad by playing hide and seek with you. However for our project we just need a basic unikernel, which boots and calls the server code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic blog written by @phil-opp. He has explained building an Unikernel wonderfully in his blog [here](http://os.phil-opp.com/). I used that for building my Unikernel.
+-> To start with, first we need to build an Unikernel. Trust me when I say writing an OS takes a lot of effort and time. A small mistake or a small inaccuracy may make you go mad by playing hide and seek with you. However for our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic [blog](http://os.phil-opp.com/) written by @phil-opp. I used the OS he built as my Unikernel, with some slight modifications.
 
-2. Next, we will boot this OS on a hypervisor. Once everything is working fine, we need to detect the underlying hardware and detect the network device, since this is the bridge for all the communication.
+-> Next, we will boot this OS on a hypervisor. Once everything is working fine, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
 
-3. Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
+-> Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
 
-4. Include a file system,threads and write a basic Server-client handshake protocol and the project is done.
+-> Include a file system,threads and write a basic Server-client handshake protocol and the project is done.
 
 ## Detecting the hardware devices
-The microprocessor consists of a bus that connects it with all other hardware devices called as PCI bus. PCI stands for __Peripheral Component Interconnect__. As the name indicates it is a standard which connects the peripheral devices with the CPU. There are 256 buses in the PCI board. The first bus is  called Primary bus or PCI bus. Remaining buses are called Secondary buses and these buses are connected to each other by PCI-PCI bus. Each bus contains 32 pins and each pin can be corresponded to a device.
+The microprocessor consists of a device that connects it to all the hardware devices called as the PCI bus. PCI stands for __Peripheral Component Interconnect__. As the name indicates it is a standard which connects the peripheral devices with the CPU. There are 256 buses in the PCI board. The first bus is  called Primary bus or PCI bus. Remaining buses are called Secondary buses and these buses are connected to each other by PCI-PCI bridge. Each bus contains 32 pins and each pin can be corresponded to a hardware device.
 
 Each PCI device is characterized by the following features  
  - Vendor ID
@@ -55,9 +60,9 @@ Each PCI device is characterized by the following features
  - Register number
  - Function number
 
-A PCI device can be anything. It can be a VGA card, Ethernet Network Controller, Sound card etc.., Now we need to figure out a way to communicate with these PCI devices. There are two ways to do this.
+A PCI device could be anything ranging from a VGA card, Ethernet Network Controller to a Sound card, mouse or keyboard. Now we need to figure out a way to communicate with these PCI devices. There are two ways to do this...
 ### Ports I/O
-In this method, there exists a special I/O address space away from the RAM and an IO pin is enabled each time an I/O query happens. Looking at this the CPU diverts the query to this address space. Device address spaces are embedded into this. They are accessed as `base_address + io_offset` using special offsets called Ports.
+In this method, there exists a special I/O address space away from the RAM and an IO pin is enabled each time an I/O query happens. Looking at this the CPU diverts the query to this address space. Device address spaces are embedded into this. They are accessed as `base_address + io_offset` using special offsets called Ports. 
 ### Memory Mapped I/O
 In this method the device address spaces are embedded in the RAM itself and we just need to know where they are situated in order to access them.
 
@@ -99,7 +104,7 @@ impl Pci {
       return ((0x1 as u32) << 31) | ((bus as u32) << 16) | ((device as u32) << 11) | ((function as u32) << 8) | offset as u32;
     }
   }
-  ```
+```
 Once we build the address, we put this into the address port of the PCI device and it returns a 32-bit memory block that starts at the input address into the data port.
 
  ```rust
@@ -112,7 +117,7 @@ Once we build the address, we put this into the address port of the PCI device a
     let input = self.data_port.in32();
     Ok(input)
   }
-```
+ ```
 Using the above preliminary function repeatedly, we can read all about the device, 4 bytes at a time.
 ```rust
   pub fn read_bytes(&mut self, bus: u8, device: u8, start_address: u16, size: u16) -> Vec<u32> {
@@ -159,7 +164,9 @@ Using the above preliminary function repeatedly, we can read all about the devic
 
 }
 ```
-This is the main program. This extracts all the device information from all the devices in all the 256 buses and checks which ones are valid. The main information that we need from here is the class and subclass information of each device. Specifically we are looking for the Ethernet Adapter Controller. Its class number is `0x02` and sub-class is `0x00`. Here is the list of devices found.
+This is the main program. It extracts the device information from the devices in all the 256 buses and checks which are valid and which are not. Looking at the class and sub-class information of each device, we identify that the address space concerns the corresponding hardware device. Specifically we are looking for the Ethernet Adapter Controller. Its class number is `0x02` and sub-class is `0x00`. Here's the list of devices that we found. 
+
+
 
 ```rust
 impl DriverManager for Pci {
@@ -217,24 +224,25 @@ impl DriverManager for Pci {
 Sorry for bad formatting but if you look closely, we can find a device with `deviceID-0x8139`, `vendorID-0x10EC`,`class-0x02` and `subclass-0x00`. We need to find out what the device is. So, fire up the browser. O Wait! You are already in the browser! Anyways, go to this site [http://pcidatabase.com/](http://pcidatabase.com/) and enter the vendorID and deviceID in them. You will find the following output.
 
 `0x8139	RTL8139 Fast Ethernet NIC	0x10EC	Realtek Semiconductor Corp.`
-So it is the infamous RTL8139 Ethernet Network Interface Controller. Hurray! We have found the Network card present in the hardware.
+So it is the infamous RTL8139 Ethernet Network Interface Controller. Hurray! We have found the Network card exists in the hardware.
 
   > Incase you are emulating the hardware using a Virtual Machine like Qemu for testing, you need to setup the ethernet card configuration before hand. There are several Network cards that Qemu supports. Fortunately it supports RTL8139 card. We set it using the following  command.
 
   > __qemu-system-x86_64 -hda /path/to/hda.img -netdev user,id=user.0 -device rtl8139,netdev=user.0__
 
-  > By default device be set to *e1000*
+  > By default, the network device will be set to *e1000* in Qemu. 
 
 
-Now all it is left is to write a device driver for RTL8139 Network Adapter controller.
+Now all it is left is to write a device driver for RTL8139 Network Adapter Controller.
 ## Ethernet Driver Development for RTL8139
 Driver development is so complicated as it involves frequent communication
 with the hardware addresses and ports. However there is a smooth road map that
-one can follow to write a network device driver. The following steps will enumerate the procedure.
+one can follow to write a network device driver. They are as follows: 
 
 1. Detecting the device
 2. Enabling the device
-3. Understanding the device4. Initializing the device
+3. Understanding the device
+4. Initializing the device
 5. Transmission Mechanism
 6. Transmitting the Packets
 7. Receiving Mechanism
@@ -318,15 +326,16 @@ the next packet is to be stored is updated. Once the linear memory for the buffe
 is completely exhausted, it again starts storing from the top.
 
 ### Receiving the Packets
+(Will write a more detailed explanation as I missed the details about writing the PIC8259 interrupt controller and actually working with the Receive Buffer along with other cool stuff.)  
+
 Whenever a packet is received, the device generates a hardware interrupt with
 an interrupt number and transfers it to the PIC. PIC stands for programmable
 interrupt controller and manages the interrupts in the entire system. Since the
 first 32 interrupts are reserved for Software exceptions, our hardware IRQ1 must
 somehow be re-assigned to some other number. To achieve this **PIC** will have a
-built-in offset to the IRQ it receives. It adds this to the __IRQ__ number and generates an
-interrupt with the final number and sends it to the IDT. IDT then stops everything,
-saves the context to the stack, jumps into the ISR and use the kernel stack for
-servicing the interrupt. In ISR we decide on how to handle the received packet.
+built-in offset to the IRQ it receives. It adds this to the __IRQ__ number and generates a software interrupt with the final number and sends it to the IDT. IDT then stops everything, saves the context to the stack, jumps into the ISR and use the kernel stack for servicing the interrupt. In ISR we decide on how to handle the received packet. 
+
+All credits to [OS Dev Wiki!](https://wiki.osdev.org/Expanded_Main_Page) and my OS course.
 
 ## Testing
 For testing first we need to setup a network backend and establish connection
@@ -406,16 +415,18 @@ the TAP device.
 A more complicated setup is required to demonstrate the reception mechanism.
 We will keep it for the future.
 
+
+
 ## TODO
 - ~~I was unable to implement the Reception Mechanism as I couldn't get the driver to send an interrupt to the IDT.~~ (Completed)
-- ~~Once the above problem is dealt with, we can handle the reception mechanism.~~ (Completed)
+- ~~Once the above problem is dealt with, we can handle the reception mechanism.~~ (Completed. Look at the demo link at the top of the page.)
 - Once that is done, we should think about the kind of server we are trying to implement - FTP, HTTP, UDP etc..,
 - I guess we need an explicit File System and Threads to be enabled in our Unikernel to process user requests.
 - Code the server.
 
 ---------------------------------------------------------------------------------------------------------
 
-Now, Try NOT to imagine a pink elephant wearing shades and drinking a coconut in the Hawaii beach.  
+Now, Try NOT to imagine a pink elephant sitting in a beach wearing shades and drinking a coconut under an umbrella. 
 
 You just did. Cheers!
 
