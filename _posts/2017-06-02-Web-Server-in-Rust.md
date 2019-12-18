@@ -43,13 +43,13 @@ The aim of this project is to build a web server which will then be placed along
 
 Well, that is a lot to take, especially if you are a beginner. But trust me, I was also a beginner (I still am) when I started this and had no idea what to do. However google searches and a lot of research for almost a month, I landed up with a method to address the problem. The path after this was marked by innumerous  segmentation faults, stupidities of an amateur and ignorance of the simplitudes. I won't talk about them here, but it feels good to acknowledge them. Afterall, we learn from our mistakes, right?
 
--> To start with, first we need to build an Unikernel. Trust me when I say writing an OS takes a lot of effort and time. A small mistake or a small inaccuracy may make you go mad by playing hide and seek with you. However for our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic [blog](http://os.phil-opp.com/) written by @phil-opp. I used the OS he built as my Unikernel, with some slight modifications.
+- To start with, first we need to build an Unikernel. Trust me when I say writing an OS takes a lot of effort and time. A small mistake or a small inaccuracy may make you go mad by playing hide and seek with you. However for our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic [blog](http://os.phil-opp.com/) written by @phil-opp. I used the OS he built as my Unikernel, with some slight modifications.
 
--> Next, we will boot this OS on a hypervisor. Once everything is working fine, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
+- Next, we will boot this OS on a hypervisor. Once everything is working fine, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
 
--> Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
+- Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
 
--> Include a file system,threads and write a basic Server-client handshake protocol and the project is done.
+- Include a file system,threads and write a basic Server-client handshake protocol and the project is done.
 
 ## Detecting the hardware devices
 The microprocessor consists of a device that connects it to all the hardware devices called as the PCI bus. PCI stands for __Peripheral Component Interconnect__. As the name indicates it is a standard which connects the peripheral devices with the CPU. There are 256 buses in the PCI board. The first bus is  called Primary bus or PCI bus. Remaining buses are called Secondary buses and these buses are connected to each other by PCI-PCI bridge. Each bus contains 32 pins and each pin can be corresponded to a hardware device.
