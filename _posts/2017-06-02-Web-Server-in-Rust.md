@@ -9,58 +9,60 @@ categories : [Systems Programming]
 
 
 
-This is the work I have done for my undergraduate thesis at the Computer Science department of IITM, under the guidance of  [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The goal of the project is to build a **Unikernel Web Server in Rust**. The aims of this project are two-fold: 
+This is the work I have done as part of my undergraduate thesis at the Computer Science department of IIT  Madras, under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The primary motives behind this project are as follows: 
 
-1. To write a web server in Rust, as Rust by its design results in the applications that are resilient to memory errors and does this without compromising on the speed. 
-2. Use an Unikernel, so that the kernel has a least amount of role in the entire operation of the application, allowing the application to talk with the hardware directly. Unikernel just setsup the execution environment and memory management. 
+1. Write a web server that interacts directly with the hardware cutting down the intermediary OS-layer as much as possible  -- Results in an increased performance. 
+2. Use Rust as the language -- Rust by its design produces applications that are resilient to memory errors that crash the system, making this kind of servers an ideal replacement for servers on the cloud. 
 
-All the source code regarding this project is available [here](https://github.com/rajiv256/huckle). Contact me, if you have any issues in running it, I might be able to help. 
+All the source code regarding this project is available [here](https://github.com/rajiv256/huckle). I'd be glad to help you if you are interested in learning more. [Drop me a mail!](mailto:rajivpensidpri@gmail.com) 
 
 ## Packet Exchange Demo
 
-Here's the link for the packet exchange demo. Will try to embed it into this page at a later stage (I like it when my sentence rhymes) . [Demo Link!](https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing")
+Here's the link for the packet exchange demo. Will try to embed it into this page at a later stage. [Demo Link!](https://drive.google.com/file/d/1h2-dntk4vusayJSGz1AcK3YRA4ZG21wm/view?usp=sharing")
 
 ## Pay the Piper
 <!--break-->
 
-For a long time, servers on the cloud were being written in C or C++, because they are arguably low-level languages and therefore produces blazingly fast web servers. However, this definitive advantage comes with a small glitch - The applications written in these languages are prone to run-time errors like Segmentation fault or dangling pointers or null pointers, or any combination of them, which make the system crash. This could be a burden to bear in performance-critical application, but when it comes to reliability, we can see a glaring short-coming in these web servers. Not to mention they produce a huge heap of debug messages that can confuse the most experienced. Therefore, there is a need for a language that is reliable and guarantees memory safety without compromising much on the performance.
+For a long time, servers on the cloud were being written in either C or C++. Being low-level languages, they have the advantage of speed over applications written in higher-level languages, say Java or Python for example. However, this definitive advantage comes with a small glitch - The applications written in these languages are prone to Segmentation faults, dangling pointers etc.., which can/potentially can crash the applications. Enterprises often face revenue losses due to the resulting down-time. In this regard, there is a need for a language that guarantees the memory safety and be capable of doing it without compromising on speed. 
 
 Enter Rust!
 
 ## Rust
 
-Rust is a systems programming language that is focused on safety, security and concurrency. Rust has almost no run-time. All the type checking is done during the compile time and therefore leaves very less to do during the runtime, thus ensuring the speed. As for safety, the features like __Ownership__, __References__ & __Borrowing__, and __Lifetimes__ give it a superior memory management scheme that is devoid of memory errors. Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for and therefore is a better alternative for writing low-level, performance-critical applications like device drivers or operating systems. This also works well in the cloud. Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a bare-metal hardware on the cloud.
+Rust is a systems programming language that is focused on safety, security and concurrency. Rust has almost zero run-time. All the type checking is done during the compile time which leaves very less to be done during the runtime, thereby ensuring the speed. As for the safety, features like Ownership__, __References & Borrowing, and Lifetimes give it a superior memory management scheme that is devoid of memory errors. Therefore Rust is fast as well as memory safe, which is exactly the kind of language we are looking for and therefore is a better alternative for writing low-level, performance-critical applications like device drivers or operating systems. This also works well in the cloud. **Our aim here is to write a server that will run on an Unikernel which can inturn be hosted on a bare-metal hardware on the cloud.**
 
 You can read more about Rust and its superior features [here](https://doc.rust-lang.org/book/).
 
 ## Unikernel
-Unikernels are single memory address space machines. They could be seen as miniOS-es where you can only run one program. Basically unikernels are just a subset of libraries that we need, taken from an OS and compiled into a bootable image. Their memory footprint is far lesser than a regular OS and because of this, the performance of the Unikernel will be far better than regular operating systems. 
+Unikernel is a single address space machine. It could be seen as a miniature Operating System which can run just one program. Basically, it is just a subset of OS libraries that we need and compiled into a bootable image. The Unikernel in our project servers two purposes: 
 
-## Goal of the Project
-The aim of this project is to build a web server which will then be placed along with an Unikernel. So, what happens is that the Unikernel boots and starts the server. The entire setup needs to be setup on a bare-metal which is nothing but raw hardware.
+1. Provide an execution environment. 
+2. Memory Management through Paging and Interrupt Service Routines. 
+
+It boots and starts the server and helps it during the packet transmission and reception mechanisms by providing the Interrupt Service Routines. (ISRs) 
 
 ## How do we proceed?
 
-Well, that is a lot to take, especially if you are a beginner. But trust me, I was also a beginner (I still am) when I started this and had no idea what to do. However google searches and a lot of research for almost a month, I landed up with a method to address the problem. The path after this was marked by innumerous  segmentation faults, stupidities of an amateur and ignorance of the simplitudes. I won't talk about them here, but it feels good to acknowledge them. Afterall, we learn from our mistakes, right?
+Well, that might be a lot to take especially if you are a begineer. But trust me, I was also a beginner when I got started with it and had almost zero knowledge of how to proceed. However, numerous google searches and a lot of research on IRC forums, I landed up with a roadmap. Although, the path after this was marked by segmentation faults and stupidities and ignorance of an amateur. I won't be talking about them here, but it just feels good to acknowledge them. After all, we learn from our mistakes, right? 
 
-- To start with, first we need to build an Unikernel. Trust me when I say writing an OS takes a lot of effort and time. A small mistake or a small inaccuracy may make you go mad by playing hide and seek with you. However for our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic [blog](http://os.phil-opp.com/) written by @phil-opp. I used the OS he built as my Unikernel, with some slight modifications.
+- To start with, first we need to build an Unikernel. For our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic series of [blog posts](http://os.phil-opp.com/) written by Phillip Oppermann. I used the OS he built as my Unikernel, with some slight modifications. 
 
-- Next, we will boot this OS on a hypervisor. Once everything is working fine, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
+- Next, we will boot this OS on a hypervisor (Qemu). Once that setup is working, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
 
 - Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
 
-- Include a file system,threads and write a basic Server-client handshake protocol and the project is done.
+- Include a file system, threads and write a basic server-client handshake protocol and the project is done.
 
 ## Detecting the hardware devices
-The microprocessor consists of a device that connects it to all the hardware devices called as the PCI bus. PCI stands for __Peripheral Component Interconnect__. As the name indicates it is a standard which connects the peripheral devices with the CPU. There are 256 buses in the PCI board. The first bus is  called Primary bus or PCI bus. Remaining buses are called Secondary buses and these buses are connected to each other by PCI-PCI bridge. Each bus contains 32 pins and each pin can be corresponded to a hardware device.
+Hardware devices are connected to the CPU through a device called the PCI bus. PCI stands for *Peripheral Component Interconnect*. There are a total of 256 buses in this device. The first bus is called the Primary bus and the rest are called secondary buses. They are connected to each other by a PCI-PCI bridge. Each of these buses contain 32 pins and each pin coresspond to a hardware device. 
 
-Each PCI device is characterized by the following features  
+Each PCI device is characterized by the following features:
  - Vendor ID
  - Device ID
  - Register number
  - Function number
 
-A PCI device could be anything ranging from a VGA card, Ethernet Network Controller to a Sound card, mouse or keyboard. Now we need to figure out a way to communicate with these PCI devices. There are two ways to do this...
+A PCI device could be anything ranging from a VGA card, Ethernet Network Controller to a Sound card, a mouse or a keyboard. Now we need to figure out a way to communicate with these PCI devices. There are two ways to do this...
 ### Ports I/O
 In this method, there exists a special I/O address space away from the RAM and an IO pin is enabled each time an I/O query happens. Looking at this the CPU diverts the query to this address space. Device address spaces are embedded into this. They are accessed as `base_address + io_offset` using special offsets called Ports. 
 ### Memory Mapped I/O
@@ -68,7 +70,7 @@ In this method the device address spaces are embedded in the RAM itself and we j
 
 <img src="/public/img/ouros_images/ouros_mmio_portio.jpg">
 
-To know more about the distinction read [this](http://www.bogotobogo.com/Embedded/memory_mapped_io_vs_port_mapped_isolated_io.php). We will be using Ports I/O in our project.
+To know more about the distinction read [this](http://www.bogotobogo.com/Embedded/memory_mapped_io_vs_port_mapped_isolated_io.php). We will be using Memory Mapped I/O in our project.
 
 Each PCI device consists of two ports/offsets within the device namely `address_port` and `data_port` which can be used to communicate with and get information about the device. See the code below.
 ```rust
@@ -85,7 +87,7 @@ impl Pci {
   }
 }
 ```
-Each of these ports are 32-bit numbers and can be read and written to. A port can be thought of as an offset within the device. For more information regarding refer [OS Dev PCI](http://wiki.osdev.org/PCI). Read [this](https://en.wikipedia.org/wiki/PCI_configuration_space#Hardware_implementation) and [this](https://en.wikipedia.org/wiki/PCI_configuration_space#Software_implementation). Now we query the *address port* of a PCI device by building the I/O address for each device given the device number  and bus number. This query will output the information of vendorID, deviceID etc.., of the device into the data port of the device. We go step-by-step.
+Each of these ports are 32-bit numbers and can be read and written to. A port can be thought of as an offset within the device. For more information regarding this refer [OS Dev Wiki : PCI](http://wiki.osdev.org/PCI). Read [this](https://en.wikipedia.org/wiki/PCI_configuration_space#Hardware_implementation) and [this](https://en.wikipedia.org/wiki/PCI_configuration_space#Software_implementation). Now we query the `address port` of a PCI device by building the I/O address for each device given the device number  and bus number. This query will output the information about vendorID, deviceID etc.., of the device into the data port of the device. Let's go step-by-step.
 
 The below code snippet will build the address to be queried in the I/O address space we discussed earlier. As we can see the device number cannot be greater than 31. Now we build the I/O address. The 32nd MSB will be 1, indicates that the address query should go to I/O space. The first 16 bits correspond to the _bus number_, next 5 bits belong to the _device number_, next 3 bits correspond to the _function number_ and the remaining bits are offset bits.    
 ```rust
@@ -111,8 +113,9 @@ Once we build the address, we put this into the address port of the PCI device a
   pub fn read(
     self, bus: u8, device: u8, function: u8, offset: u8) -> Result<u32, ()> {
     let address = Pci::build_address(bus, device, function, offset);
-
-    self.address_port.out32(address);
+      
+		// The below three steps are standard procedure for probing s PCI device. 
+    self.address_port.out32(address); 
     Port::io_wait();
     let input = self.data_port.in32();
     Ok(input)
@@ -224,7 +227,7 @@ impl DriverManager for Pci {
 Sorry for bad formatting but if you look closely, we can find a device with `deviceID-0x8139`, `vendorID-0x10EC`,`class-0x02` and `subclass-0x00`. We need to find out what the device is. So, fire up the browser. O Wait! You are already in the browser! Anyways, go to this site [http://pcidatabase.com/](http://pcidatabase.com/) and enter the vendorID and deviceID in them. You will find the following output.
 
 `0x8139	RTL8139 Fast Ethernet NIC	0x10EC	Realtek Semiconductor Corp.`
-So it is the infamous RTL8139 Ethernet Network Interface Controller. Hurray! We have found the Network card exists in the hardware.
+So it is the infamous RTL8139 Ethernet Network Interface Controller. Hurray! We have found the network card. Let's figure out how we can talk with it? 
 
   > Incase you are emulating the hardware using a Virtual Machine like Qemu for testing, you need to setup the ethernet card configuration before hand. There are several Network cards that Qemu supports. Fortunately it supports RTL8139 card. We set it using the following  command.
 
@@ -233,7 +236,7 @@ So it is the infamous RTL8139 Ethernet Network Interface Controller. Hurray! We 
   > By default, the network device will be set to *e1000* in Qemu. 
 
 
-Now all it is left is to write a device driver for RTL8139 Network Adapter Controller.
+
 ## Ethernet Driver Development for RTL8139
 Driver development is so complicated as it involves frequent communication
 with the hardware addresses and ports. However there is a smooth road map that
@@ -261,17 +264,17 @@ transmission and receiving capabilities of the card.
 The RTL8139 consists of many components. A thorough understanding of what
 each device does is important for writing a driver to it. Lets see what each field
 does :
-- __Name__ : Contains the name of the device, something like eth0 etc.,
-- __Base address__ : Contains the I/O base address of the device.
-- __Device address__ : Hardware MAC address of the device.
-- __Broadcast__ : Device’s broadcast address
-- __Hardware header Length__ : The number of bytes that lead the packet before the IP
+- __Name__: Contains the name of the device, something like eth0 etc.,
+- __Base address__: Contains the I/O base address of the device.
+- __Device address__: Hardware MAC address of the device.
+- __Broadcast__: Device’s broadcast address
+- __Hardware header Length__: The number of bytes that lead the packet before the IP
   header. Typically this length is 14 for an ethernet header.
-- __IRQ__ : It is the interrupt number that our device is assigned.
-- __Open fn__ : This is a pointer to the function that opens the device. This function
+- __IRQ__: It is the interrupt number that our device is assigned.
+- __Open fn__: This is a pointer to the function that opens the device. This function
   can register any system resource it needs like I/O ports, DMA, IRQ etc.., and
   should be able to turn on the hardware, increment the count etc..,
-- __Transmit fn__ : Puts the packet on the wire.
+- __Transmit fn__: Puts the packet on the wire.
 
 There is no member function to receive the packets. This is done by the device
 interrupt handler, which we will see later.
@@ -290,7 +293,7 @@ descriptors transmit the packets in a round-robin manner. If descriptor0 is used
 to transmit the current packet then descriptor1 will be used to transmit the next
 packet. As the name suggests these descriptors store the start addresses of the
 packet to be transmitted. Once we write this address and the length of the packet
-into the ports the device will perform DMA to this address, gets the packet and
+into the ports the device will perform a **DMA **(Direct Memory Access) to this address, gets the packet and
 transmits it.
 
 ### Transmitting the Packets
@@ -299,6 +302,7 @@ enable the transmit flag of the device. After that we put the address of the pac
 be transmitted into one of the TSADs. The device reads the corresponding address
 through DMA and puts it on the wire. Packet is transmitted. Here is the code that
 shows all the above said procedure.
+
 ```rust
 fn put_frame(&mut self, buf: &[u8]) -> Result<usize, u32> {
   self.transmit_address[self.descriptor].out32(buf.as_ptr() as u32);
@@ -326,11 +330,11 @@ the next packet is to be stored is updated. Once the linear memory for the buffe
 is completely exhausted, it again starts storing from the top.
 
 ### Receiving the Packets
-(Will write a more detailed explanation as I missed the details about writing the PIC8259 interrupt controller and actually working with the Receive Buffer along with other cool stuff.)  
+(Will write a more detailed explanation when cometh the time.)  
 
 Whenever a packet is received, the device generates a hardware interrupt with
-an interrupt number and transfers it to the PIC. PIC stands for programmable
-interrupt controller and manages the interrupts in the entire system. Since the
+an interrupt number and transfers it to the PIC. PIC stands for Programmable
+Interrupt Controller which manages the entire system interrupts. Since the
 first 32 interrupts are reserved for Software exceptions, our hardware IRQ1 must
 somehow be re-assigned to some other number. To achieve this **PIC** will have a
 built-in offset to the IRQ it receives. It adds this to the __IRQ__ number and generates a software interrupt with the final number and sends it to the IDT. IDT then stops everything, saves the context to the stack, jumps into the ISR and use the kernel stack for servicing the interrupt. In ISR we decide on how to handle the received packet. 
