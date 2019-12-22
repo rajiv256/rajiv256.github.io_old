@@ -7,14 +7,13 @@ tags : [web-server,unikernel,rust]
 categories : [Systems Programming]
 ---
 
+This is the work I have done as part of my undergraduate thesis at the Computer Science department of IIT Madras, under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The primary motives of this project are two-fold: 
 
+1. Build a webserver that interacts directly with the hardware and requires minimal interaction with kernel for its execution. 
+2. Use Rust as the language -- Rust, by its design, produces memory-safe applications and therefore is an ideal language to write servers on the cloud. 
 
-This is the work I have done as part of my undergraduate thesis at the Computer Science department of IIT  Madras, under the guidance of [Prof. Chester Rebeiro, CSE Dept, IIT Madras](http://www.cse.iitm.ac.in/~chester/). The primary motives behind this project are as follows: 
-
-1. Write a web server that interacts directly with the hardware cutting down the intermediary OS-layer as much as possible  -- Results in an increased performance. 
-2. Use Rust as the language -- Rust by its design produces applications that are resilient to memory errors that crash the system, making this kind of servers an ideal replacement for servers on the cloud. 
-
-All the source code regarding this project is available [here](https://github.com/rajiv256/huckle). I'd be glad to help you if you are interested in learning more. [Drop me a mail!](mailto:rajivpensidpri@gmail.com) 
+All the source code regarding this project is available [here](https://github.com/rajiv256/huckle).  
+[Drop me an email](mailto:rajivpensidpri@gmail.com)  if you'd like to learn more. 
 
 ## Packet Exchange Demo
 
@@ -22,8 +21,7 @@ Here's the link for the packet exchange demo. Will try to embed it into this pag
 
 ## Pay the Piper
 <!--break-->
-
-For a long time, servers on the cloud were being written in either C or C++. Being low-level languages, they have the advantage of speed over applications written in higher-level languages, say Java or Python for example. However, this definitive advantage comes with a small glitch - The applications written in these languages are prone to Segmentation faults, dangling pointers etc.., which can/potentially can crash the applications. Enterprises often face revenue losses due to the resulting down-time. In this regard, there is a need for a language that guarantees the memory safety and be capable of doing it without compromising on speed. 
+For a long time, servers on the cloud were being written in C or C++. Being low-level languages, they have the advantage of speed over applications written in higher-level languages like Java or Python. However, this definitive advantage comes with a small glitch - Applications written in these languages are prone to memory errors in the form of segmentation faults, dangling pointers etc., resulting in crashes. In this regard, there is a need for a language that guarantees the memory safety and be capable of doing it without compromising on speed. 
 
 Enter Rust!
 
@@ -45,13 +43,13 @@ It boots and starts the server and helps it during the packet transmission and r
 
 Well, that might be a lot to take especially if you are a begineer. But trust me, I was also a beginner when I got started with it and had almost zero knowledge of how to proceed. However, numerous google searches and a lot of research on IRC forums, I landed up with a roadmap. Although, the path after this was marked by segmentation faults and stupidities and ignorance of an amateur. I won't be talking about them here, but it just feels good to acknowledge them. After all, we learn from our mistakes, right? 
 
-- To start with, first we need to build an Unikernel. For our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic series of [blog posts](http://os.phil-opp.com/) written by Phillip Oppermann. I used the OS he built as my Unikernel, with some slight modifications. 
+1. To start with, first we need to build an Unikernel. For our project we just need a basic unikernel, which boots and calls the server's main code. Therefore it will ease our process by a bit. Fortunately we already have a fantastic series of [blog posts](http://os.phil-opp.com/) written by Phillip Oppermann. I used the OS he built as my Unikernel, with some slight modifications. 
 
-- Next, we will boot this OS on a hypervisor (Qemu). Once that setup is working, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
+2. Next, we will boot this OS on a hypervisor (Qemu). Once that setup is working, we need to detect the underlying hardware, especially the network device which will be our bridge  between the physical layer and the application layer.
 
-- Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
+3. Once we detect the network device we write the device driver for the ethernet card. This involves writing the packet Transmission and Reception mechanisms.
 
-- Include a file system, threads and write a basic server-client handshake protocol and the project is done.
+4. Include a file system, threads and write a basic server-client handshake protocol and the project is done.
 
 ## Detecting the hardware devices
 Hardware devices are connected to the CPU through a device called the PCI bus. PCI stands for *Peripheral Component Interconnect*. There are a total of 256 buses in this device. The first bus is called the Primary bus and the rest are called secondary buses. They are connected to each other by a PCI-PCI bridge. Each of these buses contain 32 pins and each pin coresspond to a hardware device. 
