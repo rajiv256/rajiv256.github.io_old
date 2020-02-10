@@ -163,8 +163,13 @@
     -webkit-animation-delay: 0.25s;
     animation-delay: 0.25s;
 
-    a {
-      color: rgb(43, 112, 168);
+    a:link {
+      color: rgb(163, 102, 255); 
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: rgb(179, 198, 255);
     }
 
     .wrapper {
