@@ -277,9 +277,15 @@
     margin: 0;
   }
 
-  a {
-    color: inherit;
-  }
+   a:link {
+      color: rgb(163, 102, 255); 
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: rgb(179, 198, 255);
+    }
+
 }
 
 .page__meta-title {
@@ -373,6 +379,15 @@
     text-decoration: none;
     border-bottom: 1px solid $border-color;
   }
+   a:link {
+     color: rgb(163, 102, 255); 
+   }
+
+    /* mouse over link */
+    a:hover {
+      color: rgb(179, 198, 255);
+    }
+
 }
 
 .back-to-top {
@@ -507,6 +522,15 @@
     color: inherit;
     text-decoration: none;
   }
+   a:link {
+      color: rgb(163, 102, 255); 
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: rgb(179, 198, 255);
+    }
+
 }
 
 .page__related-title {
