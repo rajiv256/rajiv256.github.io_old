@@ -13,8 +13,9 @@ This is the work I have done as part of my undergraduate thesis at the Computer 
 2. Use Rust as the language -- Rust, by its design, produces memory-safe applications and therefore is an ideal language to write servers on the cloud. 
 
 All the source code regarding this project is available here:
-[Client Code](https://github.com/rajiv256/huckle)
-[Server Code](https://github.com/rajiv256/huckle-listen)
+
+- [Client Code](https://github.com/rajiv256/huckle)
+- [Server Code](https://github.com/rajiv256/huckle-listen)
 
 Both the above repositories are almost identical. 
 
