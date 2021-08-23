@@ -1,14 +1,22 @@
-# main links
+# main links links
 main:
-  - title: "HOME"
-    url: /
-  - title: "ABOUT"
-    url: /about/
-  - title: "PROJECTS"
-    url: /projects/
-  - title: "CATEGORIES"
-    url: /categories/
-  - title: "TAGS"
-    url: /tags/
-  - title: "ARCHIVES"
-    url: /archive/
+  - title: "Publications"
+    url: /publications/
+ 
+  - title: "Blog"
+    url: /year-archive/
+  
+  - title: "Talks"
+    url: /talks/    
+
+  - title: "Teaching"
+    url: /teaching/    
+    
+  #- title: "Portfolio"
+    #url: /portfolio/      
+   
+  - title: "CV"
+    url: /cv/
+    
+  #- title: "Guide"
+    #url: /markdown/

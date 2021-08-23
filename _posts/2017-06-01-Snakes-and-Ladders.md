@@ -1,13 +1,12 @@
 ---
-# layout : post
-date : 2017-06-01
-permalink : /projects/sandl
+<!--layout: post-->
+date: 2017-06-01
+permalink: /projects/sandl
 
-categories : [Games]
-tags : [expressJS,sockets.io,online-multiplayer-game]
-title : "Writing an Online multiplayer game using NodeJS"
+categories: [Games]
+tags: [expressJS,sockets.io,online-multiplayer-game]
+title: "Writing an Online multiplayer game using NodeJS"
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
@@ -28,7 +27,7 @@ I don't think there are any tutorials explaining each and every step and I had t
 
 
 ## History of everything - What to do, What not to do.
-When I started I don't know anything about Web development nor do I know. However I have a working knowledge with HTML and Javascript. Actually my first idea was to write a game using HTML5 and Javascript. So, I naively assumed that these two will be enough to write a multiplayer game. It took me 2 days to complete the entire code and I was able to open upto 6 tabs using localhost and play the game. Each tab has its independent Javascript and all the position is maintained by a shared memory. I was happy for a moment. But then I thought how would this setup sustain if we are running on multiple machines. Thats when it struck me. All the work I have done is worthless. :(
+When I started I don't know anything about Web development nor do I know. However I have a working knowledge with HTML and Javascript. Actually my first idea was to write a game using HTML5 and Javascript. So, I naively assumed that these two will be enough to write a multiplayer game. It took me 2 days to complete the entire code and I was able to open upto 6 tabs using localhost and play the game. Each tab has its independent Javascript and all the position is maintained by a shared memory. I was happy for a moment. But then I thought how would this setup sustain if we are running on multiple machines. Thats when it struck me. All the work I have done is worthless.:(
 
 Anyways, I started googling for a while and found that there is a way we can achieve commuication between two separate machines using NodeJS. There are two interdependent web frameworks called `ExpressJS` and `Sockets.io` which can help achieve what I need. I found that these two work by *Message Passing* technique which we will see below.
 
@@ -114,7 +113,7 @@ http.listen(3000,function(){
 ```
 Ok, thats a lot of code to process for beginners. But once it starts to make sense it is easy to understand. First 5 lines is just like `#includes` in C, C++. `http` acts as a server to the app. `io` variable looks after all the connections.
 
-First of all our app to function as a server it needs a listener on a port to accept connections. The below piece of code achieves the same. It listens to port : 3000 continuously.
+First of all our app to function as a server it needs a listener on a port to accept connections. The below piece of code achieves the same. It listens to port: 3000 continuously.
 ```
 http.listen(3000,function(){
 	console.log("Listening to connections on *:3000") ;
@@ -150,7 +149,7 @@ Now that we have setup the server side. Lets write the client side code.
 <body>
 <input type="text" placeholder="username" id="username" class="username">
 <button type="button" id="enter" class="button" onclick="addUser()"> Enter Game! </button>
-<div id="status" class="status">Status : </div>
+<div id="status" class="status">Status: </div>
 
 <div id="room">Noone yet!</div>
 <div><b>----------------------------------------------------------------------------</b></div>
@@ -236,12 +235,12 @@ https://cryptic-plateau-33460.herokuapp.com/ | https://git.heroku.com/cryptic-pl
 ```
 6. Now a remote named `heroku` is created and you can deploy from command-line directly by pushing your code onto this remote.
 	> git push heroku master
-7. Yess! Now your app will be deployed. Check the debug report in the above command and the present command. You will find an URL. Thats where your app has been deployed. Open it! What are you waiting for!? (Thats what she said :P.)
+7. Yess! Now your app will be deployed. Check the debug report in the above command and the present command. You will find an URL. Thats where your app has been deployed. Open it! What are you waiting for!? (Thats what she said:P.)
 
 8. Well, if you saw this, it means you screwed up. Otherwise you'd be immersed in testing your app. So, some unknown crap happened and your app is not working. It says, build failed.(Buzzer-Eeeeh! Thats what she said.). Anyways, whatever you have done its recoverable. Ofcourse only if you have the patience to make sense from logs. On your command line type this
 	> heroku logs --tail
 
-All the best! Happy Debugging! :shit:
+All the best! Happy Debugging!:shit:
 
 Thanks for taking the pain to scroll till here. This is my first blog post and I am planning on writing more (Did someone say *please no!?*). You are welcome to suggest changes or for any queries!
 

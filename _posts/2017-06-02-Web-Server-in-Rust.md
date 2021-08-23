@@ -1,9 +1,9 @@
 ---
 layout: single
-title : "A Web Server Unikernel in Rust"
-permalink : /projects/ouros/
-date : 2017-06-02
-tags : [web-server,unikernel,rust]
+title: "A Web Server Unikernel in Rust"
+permalink: /projects/ouros/
+date: 2017-06-02
+tags: [web-server,unikernel,rust]
 categories : [Systems Programming]
 ---
 

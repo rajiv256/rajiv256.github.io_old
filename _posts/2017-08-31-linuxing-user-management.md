@@ -1,13 +1,11 @@
 ---
-# layout : post
-date : 2017-08-31
-permalink : /linux/user-management
+date: 2017-08-31
+permalink: /linux/user-management
 
 categories : [Linux]
 tags : [user, command-line, multiuser-environments]
 title : "A concise guide to Linux - User Management"
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
