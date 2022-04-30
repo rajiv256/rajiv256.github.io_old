@@ -3,37 +3,37 @@ layout: archive
 title: "CV"
 permalink: /cv/
 author_profile: true
-redirect_from:
+redirect_to:
   - /Resume_Rajiv.pdf
 ---
 
-{% include base_path %}
+<!--{% include base_path %}-->
 
-## Education
-* B.Tech in Computer Science, Indian Institute of Technology Madras (IIT-M), 2013
+<!--## Education-->
+<!--* B.Tech in Computer Science, Indian Institute of Technology Madras (IIT-M), 2013-->
 
-## Work experience
+<!--## Work experience-->
 
-* May '20 - July '21: Research Engineer
-  * Google Research (Contract via Optimum)
-  * Worked on Event and Time understanding in Natural language text.
-  * Manager: Dr. Partha Talukdar
+<!--* May '20 - July '21: Research Engineer-->
+  <!--* Google Research (Contract via Optimum)-->
+  <!--* Worked on Event and Time understanding in Natural language text.-->
+  <!--* Manager: Dr. Partha Talukdar-->
 
-* Dec '18 - Mar' 20: Software Engineer (Machine Learning)
-  * Kenome.io
-  * Worked on ML, NLP and Knowledge Graphs 
-  * Manager: Dr. Partha Talukdar
+<!--* Dec '18 - Mar' 20: Software Engineer (Machine Learning)-->
+  <!--* Kenome.io-->
+  <!--* Worked on ML, NLP and Knowledge Graphs -->
+  <!--* Manager: Dr. Partha Talukdar-->
   
-## Skills
+<!--## Skills-->
 
-* Programming: Python, C++, Java
-* ML Frameworks: PyTorch, Tensorflow
+<!--* Programming: Python, C++, Java-->
+<!--* ML Frameworks: PyTorch, Tensorflow-->
 
-## Publications
+<!--## Publications-->
 
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  <!--<ul>{% for post in site.publications %}-->
+    <!--{% include archive-single-cv.html %}-->
+  <!--{% endfor %}</ul>-->
   
 <!--Talks-->
 <!--======-->

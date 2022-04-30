@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Thoughts, Ideas and Code"
+title                    : "Thoughts, Ideas, and Code"
 title_separator          : "-"
 name                     : &name
 description              : &description
