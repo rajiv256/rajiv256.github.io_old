@@ -1,8 +1,8 @@
 ---
 <!--layout: post-->
-date: 2017-06-01
+date: 2022-10-27
 redirect_to:
-  - /pdf-notes/but-what-is-a-fourier-transform.pdf
+  - /public/pdf-notes/but-what-is-a-fourier-transform.pdf
 
 categories: [Math, CS]
 tags: [math, cs]
