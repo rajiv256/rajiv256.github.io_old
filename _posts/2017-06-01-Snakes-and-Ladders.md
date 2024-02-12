@@ -20,7 +20,10 @@ defaults:
 
 
 ## Pay the Piper.
-Having a lot of time in hand does make you snoop around. I hate doing leg work and therefore I am snooping around discovering new domains, exploring the long postponed arenas and getting happiness from it. As a part of this I wanted to explore a little bit in web development. I was always fascinated by people embedding a game in their website and inviting people to play. For example games like [Snake.io](http://supersnake.io/) make me envy the creators as to how they could do this when I couldn't. So out of this envy I too wanted to create an online multiplayer game. Which game to choose? If I choose DoTA or CS, I will be spending my entire life time creating sprites for it. Therefore I need a simple game that has minimal logic. Automatically my mind landed on *Snakes and Ladders*.
+Having a lot of time in hand does make you snoop around. I hate doing leg work and therefore I am snooping around discovering new domains, exploring the long postponed arenas and getting happiness from it. As a part of this I wanted to explore a little bit in web development. 
+
+
+I was always fascinated by people embedding a game in their website and inviting people to play. For example games like [Snake.io](http://supersnake.io/) make me envy the creators as to how they could do this when I couldn't. So out of this envy I too wanted to create an online multiplayer game. Which game to choose? If I choose DoTA or CS, I will be spending my entire life time creating sprites for it. Therefore I need a simple game that has minimal logic. Automatically my mind landed on *Snakes and Ladders*.
 
 I don't think there are any tutorials explaining each and every step and I had to figure out everything on-the-fly. So, I wanted to write the steps I followed, difficulties I endured as a part of this little journey. I will also put some code so that beginners won't have to deal with absurd syntaxes.
 
