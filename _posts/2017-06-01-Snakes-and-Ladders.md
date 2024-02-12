@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: single
 date: 2017-06-01
 permalink: /projects/sandl
 
