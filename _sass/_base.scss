@@ -46,15 +46,15 @@ h4 {
 }
 
 h5 {
-  font-size: $type-size-6;
+  font-size: $type-size-7;
 }
 
 h6 {
-  font-size: $type-size-6;
+  font-size: $type-size-7;
 }
 
 small, .small {
-  font-size: $type-size-6;
+  font-size: $type-size-7;
 }
 
 p {
@@ -139,7 +139,7 @@ figcaption > code,
 td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
-  font-size: $type-size-5;
+  font-size: $type-size-7;
   background: $code-background-color;
   border: 1px solid $lighter-gray;
   border-radius: $border-radius;
