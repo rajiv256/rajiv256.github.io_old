@@ -20,6 +20,8 @@ defaults:
 
 Linux is a multi-user operating system. This essentially separates the users environment from the administrative environment. This kind of paradigm has many advantages.
 
+$$V_{sphere} = \frac{4}{3}\pi r^3$$
+
 - Multiple users can work on a same resource without having to replicate the data.
 - Secure from malicious software, as they will be run in the user mode and cannot access any system related information.
 - We can have variations of configurations for different users on a single system.
