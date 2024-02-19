@@ -19,6 +19,10 @@ defaults:
     share: true
     related: true
 tags: math
+output:
+  md_document:
+    variant: markdown_github
+    preserve_yaml: true
 ---
 
 One of the math concepts that continue to confound me are that of the *supremum* and *infimum*. Why do we have to complicate math discourse when we have the conventional *maxima* and *minima* that have been adsorbed into the minds of every high schooler ever [@hardy1992mathematician]? Is it because mathematicians are inherently elitist, egotistical, painfully do-hard blue-bloods? Well, no.
