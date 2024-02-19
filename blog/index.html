@@ -9,7 +9,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       
 ---
 
@@ -28,14 +28,10 @@ defaults:
     <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
     {% endfor %}
     {% endif %}
-    <article>
-      {{post.content | split:'<!--break-->'| last | truncatewords:50}}
-    </article>
     <div class="post-more">
       {% if site.disqus_short_name %}
       <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       {% endif %}
-      <a href="{{ site.baseurl }}{{ post.url }}"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   {% endfor %}
