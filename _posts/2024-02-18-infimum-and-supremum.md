@@ -54,5 +54,3 @@ This has since confounded me, but not anymore. The infimum and the supremum of a
 ### Web references
 
 1.  [The supremum and infimum in the context of a Reimann Integral](https://www.math.ucdavis.edu/~hunter/m125b/ch2.pdf)
-
-## Bibliography
