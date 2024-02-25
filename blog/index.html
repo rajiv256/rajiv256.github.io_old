@@ -15,7 +15,7 @@ defaults:
 
 <div class="posts">
   {% for post in paginator.posts %}
-  <div class="post message">
+  <!--<div class="post message">-->
     <h2 class="post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
@@ -28,14 +28,14 @@ defaults:
     <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
     {% endfor %}
     {% endif %}
-    <div class="post-more">
-      {% if site.disqus_short_name %}
-      <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      {% endif %}
-    </div>
-  </div>
+    <!--<div class="post-more">-->
+      <!--{% if site.disqus_short_name %}-->
+      <!--<a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;-->
+      <!--{% endif %}-->
+    <!--</div>-->
+  <!--</div>-->
   {% endfor %}
-</div>
+<!--</div>-->
 
 <div class="pagination">
   {% if paginator.next_page %}
